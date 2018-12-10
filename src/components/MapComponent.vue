@@ -14,12 +14,7 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'map-component',
-  components: {
-  }
-}
+<script src="./map-component.js">
 </script>
 
 <style>

@@ -11,11 +11,10 @@ import MapComponent from './components/MapComponent'
 export default {
   name: 'App',
   components: {
-    "map-component": MapComponent
+    'map-component': MapComponent
   },
   data () {
     return {
-      //
     }
   }
 }
