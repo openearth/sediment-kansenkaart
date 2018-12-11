@@ -1,31 +1,30 @@
 <template>
-  <div id="app">
   <v-app>
+    <v-toolbar  xs6 color="grey lighten-4">
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>Erosion, Consequences and Opportunityies(ECO)</v-toolbar-title>
+    </v-toolbar>
     <v-navigation-drawer
       id="navdrawer"
-      persistent
       fixed
       v-model="drawer"
       >
       <menu-component>
       </menu-component>
-    </v-navigation-drawer>
-
-    <v-toolbar id="toolbar"  xs6 color="grey lighten-4">
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Erosion, Consequences and Opportunityies(ECO)</v-toolbar-title>
-    </v-toolbar>
+    </v-navigation-drawer persistent>
     <map-component>
     </map-component>
 
-    </v-app>
-  </div>
+  </v-app>
 </template>
 
 <script src="./app.js">
 </script>
 
 <style>
+#navdrawer {
+  top: 64px;
+}
 html, body {
   width: 100vw;
   height: 100vh;
