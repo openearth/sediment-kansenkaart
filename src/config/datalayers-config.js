@@ -1,56 +1,106 @@
+const dataSources = {
+  "mapbox-sources": {
+    "url": "mapbox://sedimentkaart.4pl8i6e6,sedimentkaart.1ios0psi,sedimentkaart.4i9lah49,sedimentkaart.bbbxkvbv",
+    "type": "vector"
+  }
+}
+
 const dataLayers = [{
-  'menu-title': 'Erosion layer',
-  'active': true,
-  'mapbox-layers': [{
-    'id': 'bodemverandering-perkm-v2-67zqa0',
-    'type': 'fill',
-    'source': {
-      'url': 'mapbox://camvdvries.ats15lzk',
-      'type': 'vector'
-    },
-    'source-layer': 'Bodemverandering_perkm_v2-67zqa0',
-    'minzoom': 12,
-    'layout': {},
-    'paint': {
-      'fill-color': [
-        'interpolate',
-        ['linear'],
-        ['get', 'Bodemveran'],
-        -2,
-        'hsl(246, 100%, 48%)',
+  "title": "Bodemverandering [cm/jaar]",
+  "active": true,
+  "barlegend": "background: linear-gradient(to left, rgb(101, 72, 0), rgb(256, 256, 256), rgb(0, 0, 76));",
+  "bartext": "-2 0 2",
+  "mapbox-layers": [{
+    "id": "bodemverandering-10km",
+    "type": "fill",
+    "source": "mapbox-sources",
+    "source-layer": "bodemverandering_10km-cgpxkh",
+    "maxzoom": 12,
+    "layout": {},
+    "paint": {
+      "fill-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "Bodemveran"],
+        -5,
+        "rgb(101, 72, 0)",
         0,
-        'hsl(0, 95%, 100%)',
-        2,
-        'hsl(0, 100%, 50%)'
+        "rgb(256, 256, 256)",
+        5,
+        "rgb(0, 0, 76)"
       ]
     }
-  },
-  {
-    'id': 'bodemverandering-per25km-0ae7af',
-    'type': 'fill',
-    'source': {
-      'url': 'mapbox://camvdvries.0smie672',
-      'type': 'vector'
-    },
-    'source-layer': 'Bodemverandering_per25km-0ae7af',
-    'maxzoom': 12,
-    'layout': {},
-    'paint': {
-      'fill-color': [
-        'interpolate',
-        ['linear'],
-        ['get', 'MEAN_Bodem'],
-        -2,
-        'hsl(246, 100%, 48%)',
+  }, {
+    "id": "bodemverandering",
+    "type": "fill",
+    "source": "mapbox-sources",
+    "source-layer": "bodemverandering-6y51qw",
+    "minzoom": 12,
+    "layout": {},
+    "paint": {
+      "fill-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "Bodemveran"],
+        -5,
+        "rgb(101, 72, 0)",
         0,
-        'hsl(0, 95%, 100%)',
-        2,
-        'hsl(0, 100%, 50%)'
+        "rgb(256, 256, 256)",
+        5,
+        "rgb(0, 0, 76)"
       ]
+    }
+  },  {
+    "id": "bodemverandering-hover",
+    "type": "line",
+    "source": "mapbox-sources",
+    "source-layer": "bodemverandering-6y51qw",
+    "minzoom": 12,
+    "layout": {},
+    "paint": {
+      "line-color": "black"
+    },
+    'filter': ['==', 'Transect_id', '']
+  }]
+}, {
+  "title": "Bandijken",
+  "active": true,
+  "mapbox-layers": [{
+    "id": "bandijken-6hau6f",
+    "type": "line",
+    "metadata": {},
+    "source": "mapbox-sources",
+    "source-layer": "bandijken-6hau6f",
+    "minzoom": 12,
+    "layout": {},
+    "paint": {
+      "line-color": "hsl(112, 78%, 69%)"
+    }
+  }]
+}, {
+  "title": "Intersectie van kabels met erosie lagen",
+  "active": true,
+  "mapbox-layers": [{
+    "id": "kabels-ddx4t2",
+    "type": "symbol",
+    "metadata": {},
+    "source": "mapbox-sources",
+    "source-layer": "kabels-ddx4t2",
+    "minzoom": 12,
+    "layout": {
+      "text-field": "x",
+      "text-font": ["Caveat Bold", "Arial Unicode MS Regular"],
+      "text-size": 20,
+      "text-allow-overlap": true,
+      "text-pitch-alignment": "map"
+    },
+    "paint": {
+      "text-color": "hsl(60, 100%, 57%)"
     }
   }]
 }]
 
 export {
+  dataSources,
   dataLayers
 }

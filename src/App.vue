@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar  xs6 color="grey lighten-4">
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Erosion, Consequences and Opportunityies(ECO)</v-toolbar-title>
+      <v-toolbar-title>Erosion, Consequences and Opportunities(ECO)</v-toolbar-title>
     </v-toolbar>
     <v-navigation-drawer
       id="navdrawer"
@@ -11,7 +11,7 @@
       >
       <menu-component>
       </menu-component>
-    </v-navigation-drawer persistent>
+    </v-navigation-drawer>
     <map-component>
     </map-component>
 
