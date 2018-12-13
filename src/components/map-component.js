@@ -6,7 +6,8 @@ import {
   name: 'map-component',
   data: () => {
     return {
-      map: null
+      map: null,
+      hover_id: ""
     }
   },
   components: {
@@ -18,11 +19,7 @@ import {
     // wait for the map to load
     this.map.on('load', () => {
       console.log('adding source')
-      this.map.addSource(
-        "mapbox-sources", {
-          "url": "mapbox://sedimentkaart.4pl8i6e6,sedimentkaart.1ios0psi,sedimentkaart.4i9lah49,sedimentkaart.bbbxkvbv",
-          "type": "vector"}
-        )
+      this.map.addSource(dataSources.name, dataSources.sources)
       this.$store.state.dataLayers.forEach((layer) => {
         layer['mapbox-layers'].forEach((maplayer) => {
           this.map.addLayer(maplayer)
@@ -31,16 +28,16 @@ import {
 
       this.map.on('mousemove', 'bodemverandering', (e) => {
         this.map.getCanvas().style.cursor = 'pointer';
-        console.log(e.features[0])
-        if(this.hover_id !== e.features[0].properties.Transect_id) {
-          this.hover_id = e.features[0].properties.Transect_id
-          this.map.setFilter("shoreline-profiles-hover", ["==", "Transect_id", this.hover_id])
+        console.log('e.features', e.features[0])
+        if(this.hover_id !== e.features[0].properties.Id) {
+          this.hover_id = e.features[0].properties.Id
+          this.map.setFilter("bodemverandering-hover", ["==", "Id", this.hover_id])
         }
       })
 
       this.map.on('mouseleave', 'bodemverandering', () => {
         this.map.getCanvas().style.cursor = '';
-        this.map.setFilter("shoreline-profiles-hover", ["==", "Transect_id", ""])
+        this.map.setFilter("bodemverandering-hover", ["==", "Id", ""])
         this.hover_id = ""
       })
     })
