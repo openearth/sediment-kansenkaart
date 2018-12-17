@@ -1,13 +1,14 @@
 <template>
   <v-app>
-    <v-toolbar  xs6 color="grey lighten-4">
+    <v-toolbar height="64px" prominent fixed>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Erosion, Consequences and Opportunities(ECO)</v-toolbar-title>
+      <v-toolbar-title>Erosion, Consequences and Opportunities</v-toolbar-title>
     </v-toolbar>
     <v-navigation-drawer
       id="navdrawer"
       fixed
       v-model="drawer"
+      hide-overlay
       >
       <menu-component>
       </menu-component>
@@ -24,7 +25,9 @@
 <style>
 #navdrawer {
   top: 64px;
+  z-index: 1;
 }
+
 html, body {
   width: 100vw;
   height: 100vh;

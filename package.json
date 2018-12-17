@@ -5,9 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "mapbox-gl": "^0.50.0",
     "vue": "^2.5.20",
     "vue2mapbox-gl": "^0.4.50",
